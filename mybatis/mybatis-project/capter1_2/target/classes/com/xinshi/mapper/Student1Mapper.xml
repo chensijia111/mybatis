@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xinshi.mapper.Student1Mapper" >
+
+    <select id="findStudent1ById1" resultMap="student1ResultMap1">
+        select s.*,c.c_id,c.c_name,c.stu_id,c.score
+        from student1 as s inner join score as c on s.s_id=c.stu_id
+        where s.s_id = #{id}
+    </select>
+    <resultMap id="student1ResultMap1" type="Student1">
+        <id property="sId" column="s_id"></id>
+        <result property="sName" column="s_name"></result>
+        <result property="age" column="age"></result>
+        <result property="gender" column="gender"></result>
+        <collection property="scoreList" ofType="Score">
+            <id property="cId" column="c_id"></id>
+            <result property="cName" column="c_name"></result>
+            <result property="stuId" column="stu_id"></result>
+            <result property="score" column="score"></result>
+        </collection>
+    </resultMap>
+
+
+</mapper>

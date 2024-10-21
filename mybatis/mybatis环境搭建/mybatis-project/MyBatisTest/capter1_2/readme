@@ -1,0 +1,5 @@
+maven仓库网址
+https://mvnrepository.com/
+
+批量删除本地maven仓库*.lastUpdated文件
+for /r ./ %a in (*.lastUpdated) do @if exist "%a" del /s/q "%a
